@@ -90,13 +90,39 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-    var passLength = prompt("Choose the length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.")
+    var passLength = prompt("Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.")
     
+    var options = [
+      {
+        type: "special",
+        active: true,
+      },
+      {
+        type: "numeric",
+        active: true,
+      },
+      {
+        type: "lower",
+        active: true,
+      },
+      {
+        type: "upper",
+        active: true,
+      }
+    ]
+
+    for (var i = 0; i < options.length; i++) {
+      options[i].active = confirm(`Include ${options[i].type} characters in the generated password?`);
+    }
+
+    getRandom.apply(this, options)
+
+    return parseInt(passLength);
 }
 
 // Function for getting a random element from an array
-function getRandom(arr) {
-
+function getRandom(specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters, options) {
+  console.log("getRandom: " + options)
 }
 
 // Function to generate password with user input
@@ -109,6 +135,8 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+  var passLength = getPasswordOptions()
+
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
@@ -116,6 +144,6 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-getPasswordOptions();
+
 
 generateBtn.addEventListener('click', writePassword);
