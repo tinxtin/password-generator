@@ -92,30 +92,30 @@ var upperCasedCharacters = [
 function getPasswordOptions() {
     var passLength = 0;
     while (passLength < 8 || passLength > 128) {
-        passLength = parseInt(prompt("Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters."))
+        passLength = parseInt(prompt('Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.'))
         if (passLength < 8 || passLength > 128){
-            alert("Generated password needs to be at least 8 characters but no more than 128.\nPlease re-enter!")
+            alert('Generated password needs to be at least 8 characters but no more than 128.\nPlease re-enter!')
         }
     }
 
     var options = [
       special = {
-        type: "special",
+        type: 'special',
         active: true,
         arr: specialCharacters
       },
       numeric = {
-        type: "numeric",
+        type: 'numeric',
         active: true,
         arr: numericCharacters
       },
       lower = {
-        type: "lowercase",
+        type: 'lowercase',
         active: true,
         arr: lowerCasedCharacters
       },
       upper = {
-        type: "uppercase",
+        type: 'uppercase',
         active: true,
         arr: upperCasedCharacters
       }
@@ -124,32 +124,36 @@ function getPasswordOptions() {
     for (var i = 0; i < options.length; i++) {
       options[i].active = confirm(`Include ${options[i].type} characters in the generated password?`);
     }
-
-    getRandom(options)
-
-    console.log(passLength)
-
+    
+    generatePassword(options, passLength)
+    
     return passLength;
 }
 
 // Function for getting a random element from an array
-function getRandom(options) {
-    console.log(options)
+function getRandom(arr, length) {
+    console.log(arr)
+    console.log(length)
 }
 
 // Function to generate password with user input
-function generatePassword() {
-
+function generatePassword(options, passLength) {
+    var activeArray = [];
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].active === true) {
+            activeArray.push(options[i].arr)
+        }
+    }
+    getRandom(activeArray, passLength)
+    return 
 }
-
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-    var passLength = getPasswordOptions();
-
-    var password = generatePassword();
+    getPasswordOptions()
+    // var password = generatePassword();
     var passwordText = document.querySelector('#password');
 
     passwordText.value = password;
