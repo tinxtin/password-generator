@@ -132,8 +132,12 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr, length) {
+    var mergedArray = [];
     console.log(arr)
-    console.log(length)
+    // for (var i = 0; i < arr.length; i++) {
+    //     mergedArray.concat(arr[i])
+    //     console.log(mergedArray)
+    // }
 }
 
 // Function to generate password with user input
@@ -141,7 +145,7 @@ function generatePassword(options, passLength) {
     var activeArray = [];
     for (var i = 0; i < options.length; i++) {
         if (options[i].active === true) {
-            activeArray.push(options[i].arr)
+            activeArray.push(...options[i].arr)
         }
     }
     getRandom(activeArray, passLength)
