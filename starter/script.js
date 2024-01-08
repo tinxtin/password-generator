@@ -116,9 +116,10 @@ function getPasswordOptions() {
 
     for (var i = 0; i < options.length; i++) {
       options[i].active = confirm(`Include ${options[i].type} characters in the generated password?`);
+      console.log(options[i].active)
     }
 
-    return options
+    return options;
 }
 
 // Function for getting a random element from an array
@@ -131,29 +132,33 @@ function generatePassword() {
 
     var passLength = 0;
     while (passLength < 8 || passLength > 128) {
-        passLength = parseInt(prompt('Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.'))
+        passLength = parseInt(prompt('Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.'));
+        console.log(passLength)
         if (passLength < 8 || passLength > 128){
-            alert('Generated password needs to be at least 8 characters but no more than 128.\nPlease re-enter!')
+            alert('Generated password needs to be at least 8 characters but no more than 128.\nPlease re-enter!');
         }
     }
 
-    var inputOptions = getPasswordOptions()
-    console.log(inputOptions)
+    var inputOptions = getPasswordOptions();
     var password = '';
     var activeArray = [];
 
-    for (var i = 0; i < inputOptions.length; i++) {
-        if (inputOptions[i].active === true) {
-            activeArray.push(...inputOptions[i].arr)
-        }
-    }
-    console.log(activeArray)
+	if (inputOptions.find((i) => i.active !== true)) {
+		for (var i = 0; i < inputOptions.length; i++) {
+			if (inputOptions[i].active === true) {
+				activeArray.push(...inputOptions[i].arr);
+			}
+		}
+	} 
+
+	console.log(activeArray)
+
     for (var i = 0; i < passLength; i++) {
-        var singleChar = getRandom(activeArray)
+        var singleChar = getRandom(activeArray);
         password += singleChar;
     }
-    console.log(password)
-    return password
+
+    return password;
 }
 
 // Get references to the #generate element
@@ -162,6 +167,7 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
+    if (password === undefined) {return};
     var passwordText = document.querySelector('#password');
     passwordText.value = password;
     }
