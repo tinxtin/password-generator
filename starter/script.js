@@ -116,7 +116,6 @@ function getPasswordOptions() {
 
     for (var i = 0; i < options.length; i++) {
       options[i].active = confirm(`Include ${options[i].type} characters in the generated password?`);
-      console.log(options[i].active)
     }
 
     return options;
@@ -139,19 +138,25 @@ function generatePassword() {
         }
     }
 
-    var inputOptions = getPasswordOptions();
     var password = '';
     var activeArray = [];
+	
+	while (activeArray.length === 0) {
+		var inputOptions = getPasswordOptions();
 
-	if (inputOptions.find((i) => i.active !== true)) {
-		for (var i = 0; i < inputOptions.length; i++) {
-			if (inputOptions[i].active === true) {
-				activeArray.push(...inputOptions[i].arr);
+		if (inputOptions.find((i) => i.active === true)) {
+			for (var i = 0; i < inputOptions.length; i++) {
+				if (inputOptions[i].active === true) {
+					activeArray.push(...inputOptions[i].arr);
+				}
 			}
+		} else {
+			alert('At least one options needs be enabled to generate password!')
 		}
-	} 
+	}
 
 	console.log(activeArray)
+
 
     for (var i = 0; i < passLength; i++) {
         var singleChar = getRandom(activeArray);
