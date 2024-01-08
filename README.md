@@ -20,31 +20,35 @@ For this week boot camp challenge, I had to come up with a algorithm for a tool 
 
 ## Screenshots
 
-![screenshot](./screenshots/ss1.png 'UI')
+![screenshot](./screenshots/ss1.png 'UI')\
 UI for the password generator.
 
-![screenshot](./screenshots/ss8.png 'UI of result')
+![screenshot](./screenshots/ss8.png 'UI of result')\
 UI of an example when a password is successfully generated and displayed on the browser.
 
-![screenshot](./screenshots/ss2.png 'input prompt')
+![screenshot](./screenshots/ss2.png 'input prompt')\
 Prompt for user input to length of password.
 
-![screenshot](./screenshots/ss5.png 'special option prompt')
+![screenshot](./screenshots/ss5.png 'special option prompt')\
 Prompt for special characters option.
 
-![screenshot](./screenshots/ss4.png 'numeric option prompt')
+![screenshot](./screenshots/ss4.png 'numeric option prompt')\
 Prompt for numeric option.
 
-![screenshot](./screenshots/ss6.png 'lowercase option prompt')
+![screenshot](./screenshots/ss6.png 'lowercase option prompt')\
 Prompt for lowercase characters option.
 
-![screenshot](./screenshots/ss7.png 'uppercase option prompt')
+![screenshot](./screenshots/ss7.png 'uppercase option prompt')\
 Prompt for uppercase characters option.
 
-![screenshot](./screenshots/ss9.png 'error length prompt')
+![screenshot](./screenshots/ss9.png 'error length prompt')\
 Prompt to tell user to enter the acceptable length input.
 
-![screenshot](./screenshots/ss3.png 'error option prompt')
+![screenshot](./screenshots/ss3.png 'error option prompt')\
 Prompt to tell user to select at least one option.
+
+## Deployed URL
+
+Deployed web page url: 
 
 
