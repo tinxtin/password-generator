@@ -134,8 +134,7 @@ function generatePassword() {
     var activeArray = [];
 
     while (passLength < 8 || passLength > 128) {
-        passLength = parseInt(prompt('Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.'));
-		console.log(passLength);
+        passLength = parseInt(prompt('Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.\nOnly number are accepted!'));
         if (isNaN(passLength)){
             return;
         } else if (passLength < 8 || passLength > 128) {
@@ -153,7 +152,7 @@ function generatePassword() {
 				}
 			}
 		} else {
-			alert('At least one options needs be enabled to generate password!')
+			alert('At least one options needs be selected to generate the password!')
 		}
 	}
 
