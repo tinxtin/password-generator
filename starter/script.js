@@ -129,17 +129,19 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
 
+	var password = '';
     var passLength = 0;
+    var activeArray = [];
+
     while (passLength < 8 || passLength > 128) {
         passLength = parseInt(prompt('Choose the character length of generated password.\nMinimum 8 characters.\nmaximum 128 characters.'));
-        console.log(passLength)
-        if (passLength < 8 || passLength > 128){
-            alert('Generated password needs to be at least 8 characters but no more than 128.\nPlease re-enter!');
-        }
+		console.log(passLength);
+        if (isNaN(passLength)){
+            return;
+        } else if (passLength < 8 || passLength > 128) {
+			alert('Generated password needs to be at least 8 characters but no more than 128.\nPlease re-enter!');
+		}
     }
-
-    var password = '';
-    var activeArray = [];
 	
 	while (activeArray.length === 0) {
 		var inputOptions = getPasswordOptions();
@@ -154,9 +156,6 @@ function generatePassword() {
 			alert('At least one options needs be enabled to generate password!')
 		}
 	}
-
-	console.log(activeArray)
-
 
     for (var i = 0; i < passLength; i++) {
         var singleChar = getRandom(activeArray);
