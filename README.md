@@ -49,6 +49,6 @@ Prompt to tell user to select at least one option.
 
 ## Deployed URL
 
-Deployed web page url: 
+Deployed web page url: https://tinxtin.github.io/password-generator/ 
 
 
